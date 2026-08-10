@@ -1,12 +1,1103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дизайн, который приносит прибыль</title>
+  <style>
+    /* -------------------- RESET & BASE -------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #141414;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.04 0"/></filter><rect width="200" height="200" filter="url(%23n)" opacity="0.3"/></svg>');
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #e8e4df;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    /* ---------- разделители ---------- */
+    .block-divider {
+      grid-column: span 12;
+      height: 2px;
+      background: #3a3a3a;
+      margin: 32px 0 16px 0;
+    }
+    /* -------------------- TYPOGRAPHY & GRID -------------------- */
+    .section-title {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: #e8e4df;
+      grid-column: span 12;
+      margin-top: 1.5rem;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+    }
+    .section-sub {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #a09b94;
+      grid-column: span 12;
+      margin-bottom: 1.5rem;
+      padding-left: 0;
+      border-left: none;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .btn {
+      background: #ab1902;
+      color: #e8e4df;
+      padding: 16px 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-block;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .btn:hover {
+      background: #c43530;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #e8e4df;
+      border: 1px solid #e8e4df;
+    }
+    .btn-outline:hover {
+      background: #e8e4df;
+      color: #141414;
+      transform: translateY(-2px);
+    }
+    /* ---------- HERO ---------- */
+    .hero {
+      grid-column: span 12;
+      display: grid;
+      grid-template-columns: subgrid;
+      padding: 60px 0 40px 0;
+      border-bottom: 2px solid #3a3a3a;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 1;
+      grid-column: span 8;
+      letter-spacing: -0.04em;
+      color: #e8e4df;
+      align-self: end;
+      padding-bottom: 6px;
+    }
+    .hero .sub {
+      grid-column: span 4;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #a09b94;
+      align-self: end;
+      padding-bottom: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .hero .sub .sub-cat {
+      max-height: 200px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .hero-stats {
+      grid-column: span 12;
+      display: flex;
+      gap: 60px;
+      margin: 32px 0 24px;
+      border-top: 2px solid #3a3a3a;
+      padding-top: 28px;
+      flex-wrap: wrap;
+    }
+    .hero-stats span {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #e8e4df;
+      letter-spacing: -0.02em;
+    }
+    .hero-stats small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #a09b94;
+      margin-left: 12px;
+    }
+    .hero-logos {
+      grid-column: span 12;
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 12px 0 28px;
+      border-top: 1px solid #3a3a3a;
+      padding-top: 28px;
+    }
+    .hero-logos div {
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: #a09b94;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .hero-cta {
+      grid-column: span 12;
+      margin-bottom: 12px;
+    }
+    /* ---------- TABS ---------- */
+    .tabs-wrap {
+      grid-column: span 12;
+      margin: 16px 0 8px;
+      overflow: hidden;
+    }
+    .tabs-nav {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid #3a3a3a;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #a09b94;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.15s;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .tab-btn.active {
+      color: #e8e4df;
+      border-bottom-color: #ab1902;
+      background: #2a2a2a;
+    }
+    .tab-content {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 12px 0 0 0;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .tab-content.active {
+      display: grid;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tab-content .metrics {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #e8e4df;
+    }
+    .tab-content .metrics small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #a09b94;
+      display: block;
+      margin-top: 4px;
+    }
+    .tab-content .left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .graph-placeholder {
+      background: #2a2a2a;
+      height: 100%;
+      min-height: 180px;
+      display: flex;
+      align-items: end;
+      padding: 12px 16px;
+      gap: 16px;
+      border: 1px solid #3a3a3a;
+    }
+    .graph-bar {
+      background: #3a3a3a;
+      width: 22%;
+      min-height: 8px;
+      transition: height 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #e8e4df;
+      position: relative;
+      height: 45%;
+    }
+    .graph-bar span {
+      position: absolute;
+      top: -22px;
+      color: #e8e4df;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .graph-bar--highlight {
+      background: #ab1902;
+    }
+    .graph-bar--low {
+      background: #4a4a4a;
+    }
+    .graph-desc {
+      margin-top: 8px;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: #a09b94;
+      padding-top: 8px;
+      border-top: 1px solid #3a3a3a;
+    }
+    .graph-desc strong {
+      color: #e8e4df;
+    }
+    .tab-content .btn-outline {
+      margin-top: 16px;
+      align-self: flex-start;
+    }
+    /* ---------- ACCORDION ---------- */
+    .accordion-wrap {
+      grid-column: span 12;
+      margin: 8px 0 8px;
+    }
+    .accordion-item {
+      padding: 16px 0;
+      cursor: pointer;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      transition: background 0.1s;
+      border-bottom: 1px solid #3a3a3a;
+    }
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+    .accordion-item:hover {
+      background: #2a2a2a;
+    }
+    .accordion-item .title {
+      font-weight: 600;
+      font-size: 1.4rem;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      color: #e8e4df;
+    }
+    .accordion-item .title .num {
+      color: #ab1902;
+      font-weight: 700;
+    }
+    .accordion-item .sub {
+      width: 100%;
+      margin-top: 6px;
+      color: #a09b94;
+      font-size: 0.95rem;
+      display: none;
+    }
+    .accordion-item.open .sub {
+      display: block;
+    }
+    .price-table {
+      grid-column: span 12;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      border-top: 2px solid #3a3a3a;
+      border-bottom: 2px solid #3a3a3a;
+      padding: 20px 0;
+      margin: 8px 0 8px;
+    }
+    .price-table .item {
+      font-weight: 400;
+      font-size: 1rem;
+      color: #a09b94;
+    }
+    .price-table .item strong {
+      font-weight: 700;
+      font-size: 1.6rem;
+      display: block;
+      margin-top: 4px;
+      color: #e8e4df;
+    }
+    .legal-block {
+      grid-column: span 12;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid #3a3a3a;
+      padding: 14px 24px;
+      margin: 16px 0 12px;
+      background: #2a2a2a;
+    }
+    .legal-block .shield {
+      font-size: 2rem;
+      font-weight: 300;
+      color: #ab1902;
+    }
+    /* ---------- CASE GRID ---------- */
+    .case-grid {
+      grid-column: span 12;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 8px 0 28px;
+    }
+    .case-card {
+      border: 1px solid #3a3a3a;
+      padding: 20px;
+      background: #222222;
+      transition: 0.15s ease;
+    }
+    .case-card:hover {
+      background: #2a2a2a;
+      transform: translateY(-4px);
+    }
+    .case-card .client {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #e8e4df;
+    }
+    .case-card .type {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: #a09b94;
+      letter-spacing: 0.05em;
+    }
+    .case-tabs {
+      display: flex;
+      gap: 12px;
+      margin: 12px 0 8px;
+    }
+    .case-tabs span {
+      background: #3a3a3a;
+      color: #e8e4df;
+      padding: 2px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .case-tabs .sol {
+      background: #ab1902;
+    }
+    .case-card .btn {
+      margin-top: 14px;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      font-size: 0.9rem;
+    }
+    /* ---------- EXPERTISE ---------- */
+    .expertise {
+      grid-column: span 12;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: center;
+      padding: 20px 0 12px;
+      border-top: 2px solid #3a3a3a;
+      border-bottom: 2px solid #3a3a3a;
+      margin: 12px 0;
+    }
+    .expertise .tool {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+      color: #e8e4df;
+    }
+    .expertise .tool-icon {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ab1902;
+    }
+    .expertise a {
+      color: #e8e4df;
+      text-decoration: none;
+      border-bottom: 2px solid #ab1902;
+      padding-bottom: 2px;
+      font-weight: 600;
+      margin-left: auto;
+    }
+    /* ---------- FAQ ---------- */
+    .faq-grid {
+      grid-column: span 12;
+      display: grid;
+      gap: 4px;
+      margin: 8px 0 0px;
+    }
+    .faq-item {
+      border-bottom: 1px solid #3a3a3a;
+      padding: 18px 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #e8e4df;
+    }
+    .faq-item .answer {
+      font-weight: 400;
+      color: #a09b94;
+      margin-top: 6px;
+      font-size: 0.95rem;
+      display: none;
+    }
+    .faq-item.open .answer {
+      display: block;
+    }
+    /* ---------- FOOTER ---------- */
+    .footer {
+      grid-column: span 12;
+      padding: 40px 0 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 12px;
+    }
+    .footer .form-wrapper {
+      max-width: 480px;
+    }
+    .footer .form-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #e8e4df;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+    .footer form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .footer input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #3a3a3a;
+      padding: 14px 4px 10px 4px;
+      font-size: 1.1rem;
+      font-weight: 400;
+      outline: none;
+      color: #e8e4df;
+      transition: border-color 0.2s ease;
+    }
+    .footer input:focus {
+      border-bottom-color: #ab1902;
+    }
+    .footer input::placeholder {
+      color: #a09b94;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+    .footer .btn {
+      align-self: flex-start;
+      padding: 14px 48px;
+      margin-top: 4px;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+    }
+    .footer .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: #a09b94;
+      margin-top: 8px;
+      cursor: pointer;
+      line-height: 1.4;
+    }
+    .footer .checkbox-label input[type="checkbox"] {
+      accent-color: #ab1902;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      cursor: pointer;
+    }
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #a09b94;
+      padding-top: 8px;
+    }
+    .footer-info strong {
+      color: #e8e4df;
+      font-size: 1.4rem;
+    }
+    .footer-info img {
+      max-width: 120px;
+      height: auto;
+      image-rendering: pixelated;
+      margin-top: 4px;
+    }
+    /* ---------- SCROLL CAT ---------- */
+    .scroll-cat {
+      position: fixed;
+      right: 30px;
+      bottom: -200px;
+      z-index: 1000;
+      width: 160px;
+      height: 160px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(40px) scale(0.6);
+      transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+      filter: drop-shadow(0 4px 24px rgba(171, 25, 2, 0.3));
+    }
+    .scroll-cat.visible {
+      bottom: 30px;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .scroll-cat img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      animation: catFloat 3s ease-in-out infinite;
+    }
+    @keyframes catFloat {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+    /* ---------- MODAL POPUP ---------- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal {
+      background: #1e1e1e;
+      border: 1px solid #3a3a3a;
+      max-width: 480px;
+      width: 100%;
+      padding: 40px 36px;
+      position: relative;
+      animation: modalFade 0.3s ease;
+    }
+    @keyframes modalFade {
+      from { opacity: 0; transform: scale(0.95) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #a09b94;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+    .modal .close-btn:hover {
+      color: #e8e4df;
+    }
+    .modal .form-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #e8e4df;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+    .modal form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .modal input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #3a3a3a;
+      padding: 14px 4px 10px 4px;
+      font-size: 1.1rem;
+      font-weight: 400;
+      outline: none;
+      color: #e8e4df;
+      transition: border-color 0.2s ease;
+    }
+    .modal input:focus {
+      border-bottom-color: #ab1902;
+    }
+    .modal input::placeholder {
+      color: #a09b94;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+    .modal .btn {
+      align-self: flex-start;
+      padding: 14px 48px;
+      margin-top: 4px;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+    }
+    .modal .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: #a09b94;
+      margin-top: 4px;
+      cursor: pointer;
+      line-height: 1.4;
+    }
+    .modal .checkbox-label input[type="checkbox"] {
+      accent-color: #ab1902;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      cursor: pointer;
+    }
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 820px) {
+      .container { padding: 0 16px; gap: 12px; }
+      .hero h1 { font-size: 2.8rem; grid-column: span 12; }
+      .hero .sub { grid-column: span 12; }
+      .section-title { font-size: 2.4rem; }
+      .case-grid { grid-template-columns: 1fr; }
+      .tab-content { grid-template-columns: 1fr; }
+      .footer { grid-template-columns: 1fr; }
+      .hero-stats span { font-size: 1.8rem; }
+      .tabs-nav .tab-btn { padding: 10px 14px; font-size: 0.9rem; }
+      .price-table { grid-template-columns: 1fr; gap: 8px; }
+      .footer .form-title { font-size: 2.2rem; }
+      .scroll-cat { width: 120px; height: 120px; right: 16px; }
+      .modal { padding: 30px 20px; }
+      .modal .form-title { font-size: 1.8rem; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.8rem; }
+      .tab-content .metrics { font-size: 2rem; }
+      .footer .form-title { font-size: 1.8rem; }
+      .footer .btn { width: 100%; text-align: center; }
+      .scroll-cat { width: 90px; height: 90px; right: 12px; bottom: 12px; }
+      .scroll-cat.visible { bottom: 12px; }
+    }
+  </style>
 </head>
 <body>
-   <p>Maximum Education</p>
+<div class="container">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="heroSection">
+    <h1>Дизайн, который приносит прибыль,<br> а не просто картинки</h1>
+    <div class="sub">
+      <img src="https://www.seekpng.com/png/full/338-3381486_stretched-out-happy-cat-1248-582-cat.png" alt="cat" class="sub-cat">
+      <span>Прозрачные цены, метрики успеха и опыт в нише. Работа с HR, стартапами и малым бизнесом.</span>
+    </div>
+    <div class="hero-stats">
+      <span>+40% <small>конверсия</small></span>
+      <span>-30% <small>время разработки</small></span>
+      <span>100% <small>соблюдение сроков</small></span>
+    </div>
+    <div class="hero-logos">
+      <div>ВКонтакте</div>
+      <div>Яндекс</div>
+      <div>МТС</div>
+    </div>
+    <div class="hero-cta">
+      <a href="#" class="btn">Связаться с экспертом</a>
+    </div>
+  </header>
+
+  <!-- ===== БЛОК 2: ТАБЫ ===== -->
+  <div class="section-title" id="secondBlock">Влияние на бизнес-показатели</div>
+  <div class="section-sub">Выберите кейс, чтобы увидеть метрики до и после</div>
+
+  <div class="tabs-wrap">
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab1">Стартапы (MVP)</button>
+      <button class="tab-btn" data-tab="tab2">Корпорации</button>
+      <button class="tab-btn" data-tab="tab3">Малый бизнес</button>
+    </div>
+
+    <div id="tab1" class="tab-content active">
+      <div class="left-col">
+        <div>
+          <div class="metrics">+120% <small>ROI за 3 месяца</small></div>
+          <div class="metrics">+45% <small>удержание пользователей</small></div>
+          <div class="metrics">+28% <small>конверсия в регистрацию</small></div>
+          <div class="graph-desc" style="border-top: none; padding-top: 0; margin-top: 12px;">
+            <strong>Было сделано:</strong> Редизайн онбординга и упрощение регистрации. Конверсия выросла с 30% до 85%.
+          </div>
+        </div>
+        <a href="#" class="btn btn-outline">Читать разбор</a>
+      </div>
+      <div>
+        <div class="graph-placeholder">
+          <div class="graph-bar graph-bar--low" style="height:30%;"><span>30%</span></div>
+          <div class="graph-bar graph-bar--highlight" style="height:85%;"><span>85%</span></div>
+          <div class="graph-bar graph-bar--low" style="height:45%;"><span>45%</span></div>
+          <div class="graph-bar graph-bar--low" style="height:60%;"><span>60%</span></div>
+        </div>
+      </div>
+    </div>
+    <div id="tab2" class="tab-content">
+      <div class="left-col">
+        <div>
+          <div class="metrics">+80% <small>NPS</small></div>
+          <div class="metrics">-22% <small>время онбординга</small></div>
+          <div class="metrics">+34% <small>кросс-продажи</small></div>
+          <div class="graph-desc" style="border-top: none; padding-top: 0; margin-top: 12px;">
+            <strong>Было сделано:</strong> Внедрена система подсказок и упрощена навигация. Время онбординга сократилось на 22%.
+          </div>
+        </div>
+        <a href="#" class="btn btn-outline">Читать разбор</a>
+      </div>
+      <div>
+        <div class="graph-placeholder">
+          <div class="graph-bar graph-bar--low" style="height:25%;"><span>25%</span></div>
+          <div class="graph-bar graph-bar--highlight" style="height:92%;"><span>92%</span></div>
+          <div class="graph-bar graph-bar--low" style="height:50%;"><span>50%</span></div>
+          <div class="graph-bar graph-bar--low" style="height:70%;"><span>70%</span></div>
+        </div>
+      </div>
+    </div>
+    <div id="tab3" class="tab-content">
+      <div class="left-col">
+        <div>
+          <div class="metrics">+60% <small>выручка на пользователя</small></div>
+          <div class="metrics">-18% <small>отказов</small></div>
+          <div class="metrics">+41% <small>повторные покупки</small></div>
+          <div class="graph-desc" style="border-top: none; padding-top: 0; margin-top: 12px;">
+            <strong>Было сделано:</strong> Оптимизация корзины и персонализация предложений. Повторные покупки выросли на 41%.
+          </div>
+        </div>
+        <a href="#" class="btn btn-outline">Читать разбор</a>
+      </div>
+      <div>
+        <div class="graph-placeholder">
+          <div class="graph-bar graph-bar--low" style="height:40%;"><span>40%</span></div>
+          <div class="graph-bar graph-bar--low" style="height:65%;"><span>65%</span></div>
+          <div class="graph-bar graph-bar--highlight" style="height:95%;"><span>95%</span></div>
+          <div class="graph-bar graph-bar--low" style="height:55%;"><span>55%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- РАЗДЕЛИТЕЛЬ -->
+  <div class="block-divider"></div>
+
+  <!-- ===== БЛОК 3: АККОРДЕОН + ТАБЛИЦА ===== -->
+  <div class="section-title">Честно о сроках, ценах и этапах</div>
+  <div class="section-sub">Согласование каждого этапа заранее</div>
+
+  <div class="accordion-wrap">
+    <div class="accordion-item open">
+      <div class="title"><span class="num">01</span> Бриф</div>
+      <div class="sub">Сбор требований, анализ рынка, CJM. Фиксируем цели и метрики.</div>
+    </div>
+    <div class="accordion-item">
+      <div class="title"><span class="num">02</span> Прототип</div>
+      <div class="sub">Интерактивный прототип в Figma, проверка гипотез, юзабилити-тесты.</div>
+    </div>
+    <div class="accordion-item">
+      <div class="title"><span class="num">03</span> Дизайн</div>
+      <div class="sub">UI-кит, адаптив, дизайн-система. Визуальная концепция под бизнес-задачи.</div>
+    </div>
+    <div class="accordion-item">
+      <div class="title"><span class="num">04</span> Тесты</div>
+      <div class="sub">A/B тесты, проверка на пользователях, итерации по результатам.</div>
+    </div>
+  </div>
+
+  <div class="price-table" id="price-block">
+    <div class="item">
+      Стоимость
+      <strong>от 45 000 ₽</strong>
+    </div>
+    <div class="item">
+      Срок
+      <strong>от 7 до 14 дней</strong>
+    </div>
+    <div class="item">
+      Средний чек
+      <strong>95 000 ₽</strong>
+    </div>
+  </div>
+
+  <div class="legal-block">
+    <span class="shield">◆</span>
+    <span style="font-weight: 500; color: #e8e4df;">Обязательно подписание NDA и передача исходников</span>
+  </div>
+
+  <!-- РАЗДЕЛИТЕЛЬ -->
+  <div class="block-divider"></div>
+
+  <!-- ===== БЛОК 4: КЕЙСЫ ===== -->
+  <div class="section-title">Разные задачи — разные решения</div>
+  <div class="section-sub">От быстрого прототипа до сложной системы</div>
+
+  <div class="case-grid">
+    <div class="case-card">
+      <div class="client">ВКонтакте</div>
+      <div class="type">MVP · 3 недели</div>
+      <div class="case-tabs">
+        <span>Задача</span>
+        <span class="sol">Решение</span>
+      </div>
+      <p style="margin: 8px 0; font-weight: 300; color: #a09b94;">Сократить время подбора кандидатов на 40%</p>
+      <a href="#" class="btn btn-outline">Скачать PDF с кейсом</a>
+    </div>
+    <div class="case-card">
+      <div class="client">Яндекс</div>
+      <div class="type">Редизайн · 5 недель</div>
+      <div class="case-tabs">
+        <span>Задача</span>
+        <span class="sol">Решение</span>
+      </div>
+      <p style="margin: 8px 0; font-weight: 300; color: #a09b94;">Повысить доверие и конверсию в инвестиционные продукты</p>
+      <a href="#" class="btn btn-outline">Скачать PDF с кейсом</a>
+    </div>
+    <div class="case-card">
+      <div class="client">МТС</div>
+      <div class="type">Сложная система · 7 недель</div>
+      <div class="case-tabs">
+        <span>Задача</span>
+        <span class="sol">Решение</span>
+      </div>
+      <p style="margin: 8px 0; font-weight: 300; color: #a09b94;">Управление логистикой в реальном времени для 200+ филиалов</p>
+      <a href="#" class="btn btn-outline">Скачать PDF с кейсом</a>
+    </div>
+  </div>
+
+  <!-- РАЗДЕЛИТЕЛЬ -->
+  <div class="block-divider"></div>
+
+  <!-- ===== БЛОК 5: ЭКСПЕРТНОСТЬ ===== -->
+  <div class="section-title">Работа в понятном стеке</div>
+  <div class="expertise">
+    <div class="tool"><span class="tool-icon">◆</span> Figma</div>
+    <div class="tool"><span class="tool-icon">◈</span> Jira</div>
+    <div class="tool"><span class="tool-icon">◉</span> GitHub</div>
+    <a href="#">LinkedIn →</a>
+  </div>
+
+  <!-- ===== БЛОК 6: FAQ ===== -->
+  <div class="section-title" style="margin-top: 0.5rem;">Частые вопросы</div>
+  <div class="faq-grid">
+    <div class="faq-item open">
+      Сколько стоит MVP?
+      <div class="answer">Стоимость MVP начинается от 95 000 ₽. Фиксируем бюджет на этапе брифа.</div>
+    </div>
+    <div class="faq-item">
+      Как происходит работа с дедлайнами?
+      <div class="answer">Каждый этап согласовывается по времени. Мы работаем с запасом в 15% на непредвиденные задачи.</div>
+    </div>
+    <div class="faq-item">
+      Можно ли увидеть метрики до начала работы?
+      <div class="answer">Да, мы проводим аудит текущих показателей и фиксируем их в отчёте до старта проекта.</div>
+    </div>
+  </div>
+
+  <!-- ===== БЛОК 7: ФУТЕР ===== -->
+  <footer class="footer" id="footerBlock">
+    <div class="form-wrapper">
+      <h3 class="form-title">Напишите нам</h3>
+      <form>
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="tel" placeholder="+7 (000) 000-00-00" required>
+        <button type="submit" class="btn">Позвоните мне</button>
+        <label class="checkbox-label">
+          <input type="checkbox" checked>
+          Заполняя форму, я соглашаюсь с политикой обработки данных
+        </label>
+      </form>
+    </div>
+    <div class="footer-info">
+      <strong>Продуктовый дизайн</strong>
+      <img src="https://static.tildacdn.com/tild3232-3737-4864-b361-653963656539/7aef80677481eace4818.png" alt="pixel cat">
+      <span style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <span style="color: #ab1902; font-weight: 700;">◆</span> 
+        <span>дизайн, который приносит прибыль</span>
+      </span>
+      <span style="margin-top: 20px;">© 2026 — все права защищены</span>
+      <span style="color: #6a6a6a;">NDA, исходники, прозрачность</span>
+    </div>
+  </footer>
+
+</div> <!-- /container -->
+
+<!-- ===== КОТ ===== -->
+<div class="scroll-cat" id="scrollCat">
+  <img src="https://www.seekpng.com/png/full/338-3381486_stretched-out-happy-cat-1248-582-cat.png" alt="Happy cat">
+</div>
+
+<!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="close-btn" id="closeModal">✕</button>
+    <h3 class="form-title">Напишите нам</h3>
+    <form>
+      <input type="text" placeholder="Ваше имя" required>
+      <input type="tel" placeholder="+7 (000) 000-00-00" required>
+      <button type="submit" class="btn">Позвоните мне</button>
+      <label class="checkbox-label">
+        <input type="checkbox" checked>
+        Заполняя форму, я соглашаюсь с политикой обработки данных
+      </label>
+    </form>
+  </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+  (function() {
+    // TABS with animation
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = {
+      tab1: document.getElementById('tab1'),
+      tab2: document.getElementById('tab2'),
+      tab3: document.getElementById('tab3'),
+    };
+    
+    tabs.forEach(btn => {
+      btn.addEventListener('click', function() {
+        tabs.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const target = this.dataset.tab;
+        Object.keys(contents).forEach(key => {
+          const content = contents[key];
+          if (key === target) {
+            content.classList.add('active');
+          } else {
+            content.classList.remove('active');
+          }
+        });
+      });
+    });
+
+    // ACCORDION
+    document.querySelectorAll('.accordion-item').forEach(item => {
+      item.addEventListener('click', function() {
+        this.classList.toggle('open');
+      });
+    });
+
+    // FAQ
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', function() {
+        this.classList.toggle('open');
+      });
+    });
+
+    // SCROLL CAT - появляется после 2 блока, исчезает на футере
+    const cat = document.getElementById('scrollCat');
+    const secondBlock = document.getElementById('secondBlock');
+    const footerBlock = document.getElementById('footerBlock');
+    
+    function updateCatVisibility() {
+      if (!cat || !secondBlock || !footerBlock) return;
+      
+      const secondRect = secondBlock.getBoundingClientRect();
+      const footerRect = footerBlock.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Кот появляется, когда заголовок 2 блока достигает верхней части экрана
+      const showCat = secondRect.top <= 50 && footerRect.top > windowHeight;
+      
+      if (showCat) {
+        cat.classList.add('visible');
+      } else {
+        cat.classList.remove('visible');
+      }
+    }
+
+    // Проверяем при скролле и загрузке
+    window.addEventListener('scroll', updateCatVisibility);
+    window.addEventListener('resize', updateCatVisibility);
+    // Небольшая задержка для корректного расчета при загрузке
+    setTimeout(updateCatVisibility, 100);
+
+    // MODAL - открывается по клику на кота
+    const modalOverlay = document.getElementById('modalOverlay');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    cat.addEventListener('click', function(e) {
+      e.stopPropagation();
+      modalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeModalBtn.addEventListener('click', closeModal);
+
+    modalOverlay.addEventListener('click', function(e) {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Обработка отправки формы в модалке
+    const modalForm = modalOverlay.querySelector('form');
+    modalForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
+      closeModal();
+      modalForm.reset();
+    });
+  })();
+</script>
+
 </body>
 </html>
